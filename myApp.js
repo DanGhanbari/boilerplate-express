@@ -8,6 +8,7 @@ app.use((req, res, next)=> {
     next();
   });
   app.use(bodyParser.urlencoded({extended: false}));
+  app.use(bodyParser.json());
 
 app.get("/", (req, res)=>{
     const absolutePath = __dirname + "/views/index.html"
@@ -42,7 +43,15 @@ app.get("/", (req, res)=>{
     res.json({
       name: `${firstName} ${lastName}`
     });
+  });
+
+  app.post("/name", (req, res)=>{ 
+    const { first: firstName, last: lastName } = req.body;
+    res.json({
+      name: `${firstName} ${lastName}`
+    });
   })
+    
 
   console.log("Hello World");
   
