@@ -20,6 +20,16 @@ app.get("/", (req, res)=>{
       }
   })
 
+  app.get("/now", (req, res, next) => {
+    req.time = new Date().toSrting();
+     next();
+   },
+   (req, res) => { 
+     res.send({time: req.time});
+   }
+ );
+   
+
   console.log("Hello World");
   
 
