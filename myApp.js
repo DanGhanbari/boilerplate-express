@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
 app.use("/public", express.static(__dirname + '/public'));
 app.use((req, res, next)=> {
@@ -6,6 +7,7 @@ app.use((req, res, next)=> {
     console.log(string)
     next();
   });
+  app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/", (req, res)=>{
     const absolutePath = __dirname + "/views/index.html"
