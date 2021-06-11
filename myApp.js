@@ -6,6 +6,11 @@ app.get("/", (req, res)=>{
     const absolutePath = __dirname + "/views/index.html"
     res.sendFile(absolutePath)
   })
+
+  app.get("/json", (req, res)=>{
+    res.json({"message": "Hello json"})
+  })
+  
   console.log("Hello World");
   
 
